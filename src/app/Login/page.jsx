@@ -2,8 +2,40 @@
 import { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
+import { toast } from "react-toastify";
+import { LoginRequest } from "../servies/Signup";
 
 const Login = () => {
+  const [fromData, serFromData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const CheakData = () => {
+    if (!fromData.email.trim() || !fromData.password.trim()) {
+      toast.info("Please fill all fields", { position: "top-center" });
+      return;
+    }
+  };
+
+  const Handsubmit = async (e) => {
+    e.preventDefault();
+    CheakData();
+
+    try {
+      const response = await LoginRequest(fromData);
+
+      if (response) {
+        toast.success("Login successful!", { position: "top-center" });
+        window.location.href = "/add_Task";
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      toast.error(error.message || "Login failed", {
+        position: "top-center",
+      });
+    }
+  };
   return (
     <>
       <Head>
@@ -32,7 +64,7 @@ const Login = () => {
             </div>
 
             {/* Login Form */}
-            <form className="space-y-6">
+            <form onSubmit={Handsubmit} className="space-y-6">
               {/* Email Field */}
               <div className="relative group">
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg blur opacity-60 group-hover:opacity-100 transition duration-300"></div>
@@ -42,6 +74,10 @@ const Login = () => {
                     type="email"
                     name="email"
                     placeholder="Email"
+                    value={fromData.email}
+                    onChange={(e) =>
+                      serFromData({ ...fromData, email: e.target.value })
+                    }
                     className="w-full bg-transparent text-orange-100 placeholder-orange-300 focus:outline-none"
                     required
                   />
@@ -56,6 +92,10 @@ const Login = () => {
                   <input
                     type="password"
                     name="password"
+                    value={fromData.password}
+                    onChange={(e) =>
+                      serFromData({ ...fromData, password: e.target.value })
+                    }
                     placeholder="Password"
                     className="w-full bg-transparent text-orange-100 placeholder-orange-300 focus:outline-none"
                     required

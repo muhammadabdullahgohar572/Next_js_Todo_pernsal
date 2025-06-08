@@ -20,9 +20,9 @@ export const Navbar = () => {
                 <Link href="../add_Task" className="text-white hover:bg-red-600 px-3 py-2 rounded-md text-sm font-medium">
                   <i className="fas fa-plus-circle mr-2"></i> TaskAdd
                 </Link>
-                <a href="#" className="text-white hover:bg-red-600 px-3 py-2 rounded-md text-sm font-medium">
+                <Link href="../Show_Task" className="text-white hover:bg-red-600 px-3 py-2 rounded-md text-sm font-medium">
                   <i className="fas fa-tasks mr-2"></i> ShowTask
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -62,9 +62,9 @@ export const Navbar = () => {
             <Link href="../add_Task" className="text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-red-600">
               <i className="fas fa-plus-circle mr-2"></i> TaskAdd
             </Link>
-            <a href="#" className="text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-red-600">
+            <Link href="../Show_Task" className="text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-red-600">
               <i className="fas fa-tasks mr-2"></i> ShowTask
-            </a>
+            </Link>
             <Link href="../Login" className="text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-red-600">
               <i className="fas fa-sign-in-alt mr-2"></i> Login
             </Link>
