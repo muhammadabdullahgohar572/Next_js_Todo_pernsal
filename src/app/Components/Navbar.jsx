@@ -14,8 +14,7 @@ export const Navbar = () => {
     try {
       await LogoutRequest();
       // Clear client-side cookie and state
-      document.cookie =
-        "logintoken=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+      document.cookie ="logintoken=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
       setUser(null);
 
       // Redirect to login page
