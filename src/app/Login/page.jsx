@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import { LoginRequest } from "../servies/Signup";
 
 const Login = () => {
@@ -127,6 +127,18 @@ const Login = () => {
           </div>
         </div>
       </div>
+       <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </>
   );
 };
