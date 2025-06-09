@@ -11,7 +11,7 @@ export function middleware(request) {
 
   const Authpath =
     request.nextUrl.pathname === "/Login" ||
-    request.nextUrl.pathname === "/signup";
+    request.nextUrl.pathname === "/Signup";
 
   if (jwt && Authpath) {
     return NextResponse.redirect(new URL("/add_Task", request.url));
