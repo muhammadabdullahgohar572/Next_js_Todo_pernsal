@@ -17,3 +17,18 @@ export const ShowTask = async (userId) => {
     throw error; // Re-throw to handle in component
   }
 };
+
+
+
+export const DeleteTask = async (taskId) => {
+  try {
+    const response = await HttpasAxios.delete(`/api/Tasks/${taskId}`);
+    if (!response.data) {
+      throw new Error("No data received");
+    }
+    return response;
+  } catch (error) {
+    console.error("Error fetching tasks:", error);
+    throw error; // Re-throw to handle in component
+  }
+};
